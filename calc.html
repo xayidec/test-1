@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) { // when document ready
+	//create 1st function
+    $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#0').click(function(){  // jquery number div id's on click
+		var v = $(this).val(); // store the number clicked on v
+		$('#answer').val($('#answer').val() + v); //this allows for value to print more than one number on #answer div
+	});
+
+	// Clear button function
+	$('#C').click(function(){
+		$('#answer').val(''); // div value empty string
+		$('#operation').val(''); // div value empty string
+		$('#operation').removeClass('activeAnswer'); // remove class
+		$('#equals').attr('onclick',''); // = btn empty string
+	});
+
+	// addition function
+	$('#plus').click(function(e) { 
+		
+		if($('#answer').val() == ''){ // if answer value is an empty string. ie - 1 + __
+			return false; // return false
+			$('#equals').attr('onclick',''); // = add attribute "onclick="return false" and empty string
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') { // if operation hidden div has class active answer ie - 1+1= 2
+			$('#operation').val( $('#operation').val() + $('#plus').val() ); // value of operation hidden div should be 1+
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#plus').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#subtract').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#subtract').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#subtract').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#divide').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#divide').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#divide').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#product').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#product').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#product').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });	
+	$('#equals').click(function(){
+		
+		if($('#equals').attr('onclick') != 'return false'){
+		
+			var a = $('#answer').val();
+			var b = $('#operation').val();
+			var c = b.concat(a);
+			$('#answer').val(eval(c));
+			$('#operation').val(eval(c));
+			$('#operation').addClass('activeAnswer');
+			$('#equals').attr('onclick','return false');
+		
+		}
+	});
+});
+</script>
+<style>
+form,input,button { margin:0px; }
+</style>
+</head>
+
+<body>
+<div style="width:200px; margin:auto;">
+    <form action="" id="calculator">
+    	<input type="hidden" id="operation" value=""/>
+    	<input type="text" id="answer" value="" style="width:98%; height:35px;" disabled="disabled"/>
+     	<input type="button" value="+" id="plus" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="-" id="subtract" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="/" id="divide" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="*" id="product" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="1" id="1" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="2" id="2" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="3" id="3" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="4" id="4" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="5" id="5" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="6" id="6" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="7" id="7" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="8" id="8" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="9" id="9" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="0" id="0" style="width:50px; height:50px; float:left;"/>
+        <input type="button" value="C" id="C" style="width:50px; height:50px; float:left; color:red;"/>
+        <input type="button" value="=" id="equals" style="width:50px; height:50px; float:left;"/>
+    </form>
+    <div style="clear:both;"></div>
+</div>
+</body>
+</html>
+ 
