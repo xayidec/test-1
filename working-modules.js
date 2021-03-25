@@ -2,7 +2,7 @@ jQuery( document ).ready( function() {
 	var imgsrc;
 	var imgChecker;
 	var openCategory;
-
+	//test
 	jQuery( "#module-down" ).attr("src" , "/assets/images/pools/content/literature-portal/module-arrow-up.png");
 	jQuery( "#module-down2" ).attr("src" , "/assets/images/pools/content/literature-portal/module-arrow-down.png");
 	jQuery( "#module-down3" ).attr("src" , "/assets/images/pools/content/literature-portal/module-arrow-down.png");
